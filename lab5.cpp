@@ -42,7 +42,6 @@ void move (int cur[], int des[], int size) //Adapted
    all mall locations.
 
 */
-	printf ("   type is %d", (Mall[cur[ROW]][cur[COL]][cur[FLOOR]]).getType());
   switch ((Mall[cur[ROW]][cur[COL]][cur[FLOOR]]).getType())
   
   {
@@ -124,7 +123,7 @@ int main (int argc, char*argv[]) //Author: Alexi Kessler
 		storeCnt = atoi(storeCntString);
 		slice = atoi(sliceString);
 		int i,j;
-		int travelSimTime[2];
+		int travelsimTime[2];
 		
 		// R array holds robot location
 		// S array holds next store location
@@ -134,13 +133,63 @@ int main (int argc, char*argv[]) //Author: Alexi Kessler
 		init_mall();
 		//Reads in the list of stores that the robot will visit and the time to be spent at each store
 		readData(storeCnt);
+		//Robot starts at A1 
+		R[FLOOR] = First;
+		R[ROW] = MID;
+		R[COL] = MAX;
+		//record robot's arrival simTime
+		travelsimTime [STIME] = simTime;
+		printf("Time: %d Robot enters Mall\n",
+	    simTime);
 		
-		/* Room for store queue implementation */
+		/* Implement movement and queue logic here
+		//go through loop once for each store                 
+		for (j = 0; j < storeCnt; j++)
+		{
+			//These variables, dr, dc, and df, are for a more elegant later implementation where stores are stored
+			//as a Dest object and only their locations are passed
+			int dr, dc, df;
+			dr = (Dests[j]).getRow();
+			dc = (Dests[j]).getCol();
+			df = 2;
+			S[ROW]=dr;
+			S[COL]=dc;
+			S[FLOOR]=df;
+			printf("Next store is at %d %d %d\n", S[ROW], S[COL], S[FLOOR]);
+
+			//robot travels from current location to next store
+			travel(R, S, SIZE);
+			printf("Time: %d Robot arrived at %d %d %d \n",
+			   simTime, S[ROW], S[COL], S[FLOOR]);
+
+		// bump up simTime to account for delay in store
+		
+		// Room for store queue implementation 
+		
+		simTime = simTime + 1 + S[FLOOR];
+		}
+
+		//robot has visited all its stores. Set store location
+		// to A1 and then robot travels to exit mall         
+
+		// use S to send robot to A1 exit from RoboMall
+		S[ROW] = MID;
+		S[COL] = MAX;
+		S[FLOOR] = First;
+		travel(R, S, SIZE);
+
+		// record robot departure simTime from RoboMall
+		travelsimTime[ETIME] = simTime;
+		printf("Time: %d Robot leaves the mall!\n",
+		simTime); 
+		simTime++;  //bump up clock by one for next robots entry
+	  
+		
 		
 		//End of Simulation
 		printf("Time: %d Simulation Ends\n", simTime);
 		//Print out the start and end time
-		printtravel(travelSimTime);
+		printtravel(travelsimTime); */
 	}
 }
 
@@ -165,89 +214,5 @@ void readData(int stores) //Author: Alexi Kessler
 	}
 }
 
-/*
-int main ()
-{
-    int i,j;
-    int robotID;
-    // R array holds robot location
-    // S array holds next store location
-
-    int robots, stores[MAX_STORES], R[3], S[3];
-
-    // init_mall initializes type and step arrays
-    init_mall();
-	
-	
-    // read in number of robots in simulation
-    scanf ("%d", &robots);
-    printf("Simulation of %d robots in RoboMall\n",
-           robots);
-
-       //travelsimTime retains info to compute robot's
-       //simTime spent in RoboMall                  
-    int travelsimTime [robots][2];
-
-    // read in number of stores each robot will visit
-    for (i = 0; i < robots; i++)
-    {
-      scanf ("%d", &stores[i]);
-      printf("Robot %d visits %d stores\n", i, stores[i]); 
-    }
-	
-    // This is the main loop for the whole simulation.
-    for (i = 0; i < robots; i++)
-    {
-      // All robots enter mall at A1
-      R[FLOOR] = First;
-      R[ROW] = MID;
-      R[COL] = MAX;
-      // record robot's arrival simTime
-      travelsimTime [i][STIME] = simTime;
-      robotID = i+1;
-      printf("Time: %d Robot %d enters Mall\n",
-	     simTime, robotID);
-
-     //go through loop once for each store
-	 //the ith robot visits                 
-      for (j = 0; j < stores[i]; j++)
-      {
-	scanf("%d %d %d", &S[ROW], &S[COL], &S[FLOOR]);
-	printf("Next store is at %d %d %d\n",
-                S[ROW], S[COL], S[FLOOR]);
-
-	// robot travels from current location to next store
-	travel(R, S, SIZE);
-	printf("Time: %d Robot %d arrived at %d %d %d \n",
-	       simTime, robotID, S[ROW], S[COL], S[FLOOR]);
-
-	// bump up simTime to account for delay in store
-	simTime = simTime + 1 + S[FLOOR];
-      }
-
-       //robot has visited all its stores. Set store location
-       // to A1 and then robot travels to exit mall         
-
-      // use S to send robot to A1 exit from RoboMall
-      S[ROW] = MID;
-      S[COL] = MAX;
-      S[FLOOR] = First;
-      travel(R, S, SIZE);
-
-      // record robot departure simTime from RoboMall
-      travelsimTime [i][ETIME] = simTime;
-      printf("Time: %d Robot %d leaves the mall!\n",
-	     simTime, robotID); 
-      simTime++;  //bump up clock by one for next robots entry
-    } //end large for loop
-
-    simTime--;   //no more robots coming - set simTime back one 
-    printf("Time: %d Simulation Ends\n", simTime);
-
-    //printtravel prints final robot simTime in RoboMall
-    printtravel (travelsimTime, robots); 
-    return 0;
-}
-*/
 #endif
 
