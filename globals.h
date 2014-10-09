@@ -1,5 +1,7 @@
 /* globals.h
 
+Originally coded by Professor Robert Kinicki, adapted  by Alexi Kessler
+
 definitions used throughout the RoboMall program. */
 
 
@@ -28,6 +30,8 @@ definitions used throughout the RoboMall program. */
 #define MAX_PATH  200 
 #define STIME 0
 #define ETIME 1
+
+static int DEBUGREAD = 1;
 
 //Tile Mall [MAX+1][MAX+1][2];
 enum Choices    {Invalid, One, Two, Three, Next, TwoWay, Elevator, Store};

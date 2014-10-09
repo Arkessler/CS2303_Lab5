@@ -1,9 +1,7 @@
 /* 
-	Originally coded by Professor Robert Kinicki, adapted to C++ and the use of objects by Alexi Kessler
+	Originally coded by Professor Robert Kinicki, adapted to C++ and the use of objects as tiles by Alexi Kessler
 	
-	This file holds the fcns that decides the 
-	next step the robot will take. These fcns
-	make all the robot direction changes.       
+	This file holds the functions that decides the next step the robot will take. These functions all the robot direction changes.       
 
 	Functions are: d1,d2,d3,next,twoway and elevator.
 */
@@ -21,7 +19,7 @@ int debugDec=1;
 void d1(int c[], int size)
 {
 	if (debugDec==1){
-		printf("\n At time %d: Making decision 1 at %d %d %d", time, c[ROW],c[COL],c[FLOOR]);
+		printf("\n At simTime %d: Making decision 1 at %d %d %d", simTime, c[ROW],c[COL],c[FLOOR]);
 		printf(" Step value at %d %d %d is %d\n", c[ROW], c[COL], c[FLOOR], (Mall[c[ROW]][c[COL]][c[FLOOR]]).getStep());
 	}
   switch ((Mall[c[ROW]][c[COL]][c[FLOOR]]).getStep())
@@ -315,8 +313,8 @@ void twoway(int c[], int d[], int size)
 // function to move robot through elevator
 void take_el(int c[], int d[], int size)
 {
-  printf ("Robot taking elevator at %d\n", time);
-  time = time + EL_DELAY;
+  printf ("Robot taking elevator at %d\n", simTime);
+  simTime = simTime + EL_DELAY;
   c[FLOOR] = d[FLOOR];
   return;
 }
@@ -326,7 +324,7 @@ void take_el(int c[], int d[], int size)
 void elevator(int c[], int d[], int size)
 {
 	if (debugDec==1)
-		printf("\nAt time %d: On Elevator. Making elevator decision.", time);
+		printf("\nAt simTime %d: On Elevator. Making elevator decision.", simTime);
   if (c[FLOOR] != d[FLOOR])
   {
     take_el(c, d, SIZE);
