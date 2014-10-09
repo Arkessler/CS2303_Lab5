@@ -125,6 +125,8 @@ int main (int argc, char*argv[]) //Author: Alexi Kessler
 		int i,j;
 		int travelsimTime[2];
 		
+		*queue storeQueue = new queue();
+		
 		// R array holds robot location
 		// S array holds next store location
 		int robots, stores[MAX_STORES], R[3], S[3];
