@@ -1,7 +1,9 @@
 //  RoboMall Program
-/* init_mall fills in specific characteristics of all
-   the locations on the First and Second Floors of RoboMall */
-
+/* 
+	Originally coded by Professor Robert Kinicki, adapted to C++ and the use of objects by Alexi Kessler
+	
+	init_mall fills in specific characteristics of all the locations on the First and Second Floors of RoboMall 
+*/
 #include<stdio.h>
 #include "externals.h"
 

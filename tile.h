@@ -1,3 +1,4 @@
+//Author: Alexi Kessler
 #ifndef TILE_H
 #define TILE_H
 //#include "globals.h"

@@ -1,16 +1,16 @@
 # Makefile for RoboMall program
 
-OBJS = robomall.o small.o init_mall.o decide.o tile.o
+OBJS = lab5.o small.o init_mall.o decide.o tile.o
 
 CC = g++
 CFLAGS = -Wall -c
 LFLAGS = -Wall
 
-Robosim : $(OBJS)
-	$(CC) $(LFLAGS) -lm $(OBJS) -o Robosim
+lab5 : $(OBJS)
+	$(CC) $(LFLAGS) -lm $(OBJS) -o lab5
 
-robomall.o : globals.h robomall.cpp
-	$(CC) $(CFLAGS) robomall.cpp
+lab5.o: globals.h lab5.cpp
+	$(CC) $(CFLAGS) lab5.cpp
 
 init_mall.o : externals.h globals.h init_mall.cpp
 	$(CC) $(CFLAGS) init_mall.cpp

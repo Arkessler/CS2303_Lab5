@@ -1,9 +1,11 @@
-/* This file holds the fcns that decides the 
-   next step the robot will take. These fcns
-   make all the robot direction changes.       
+/* 
+	Originally coded by Professor Robert Kinicki, adapted to C++ and the use of objects by Alexi Kessler
+	
+	This file holds the fcns that decides the 
+	next step the robot will take. These fcns
+	make all the robot direction changes.       
 
-Functions are: d1,d2,d3,next,twoway and elevator.
-
+	Functions are: d1,d2,d3,next,twoway and elevator.
 */
 
 #include "externals.h"

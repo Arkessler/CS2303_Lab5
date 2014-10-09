@@ -1,3 +1,4 @@
+//Author: Alexi Kessler
 #ifndef TILE_CPP
 #define TILE_CPP
 
@@ -5,12 +6,12 @@
 #include "tile.h"
 
 //Constructor
-
 Tile::Tile()
 {
 	type = step = r = c = f = 0;
 }
 
+//Set and get methods for the private variables of the tile class
 void Tile::setType(int t)
 {
 	type = t;

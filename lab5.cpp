@@ -1,18 +1,8 @@
-//  RoboMall Program
-
-/* This is Program 2 for CS2303 in A14.
-   Adapted from code Authored by Bob Kinicki
-   Adapted by Alexi Kessler
-
-This file contains the main function and
-help functions: move, travel and printtravel
-
-                                             */
-
+#ifndef LAB5_CPP
+#define LAB5_CPP
 #include <stdio.h>
 #include "globals.h"
 #include "tile.h"
-
 
 Tile Mall[MAX+1][MAX+1][2];
 int type [MAX+1][MAX+1][2];
@@ -114,6 +104,19 @@ void printtravel(int ttime [][2], int robots)
 
 int main ()
 {
+	int i,j;
+    int robotID;
+    // R array holds robot location
+    // S array holds next store location
+
+    int robots, stores[MAX_STORES], R[3], S[3];
+
+    // init_mall initializes type and step arrays
+    init_mall();
+}
+/*
+int main ()
+{
     int i,j;
     int robotID;
     // R array holds robot location
@@ -194,3 +197,6 @@ int main ()
     printtravel (traveltime, robots); 
     return 0;
 }
+*/
+#endif
+
