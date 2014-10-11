@@ -13,4 +13,4 @@ When code has been adapted, it is from C code written by Professor Robert Kinick
 source files.
 
 Queue code and implementation written by Max Li.
-Base code of functions adapted from C code written by Professor Rober Kinnicki, detailed in the source files.
+Base code of functions adapted from C code provided by Professor Robert Kinicki, detailed in the source files.
